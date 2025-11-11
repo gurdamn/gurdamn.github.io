@@ -2,33 +2,35 @@
 layout: default
 ---
 <article {% if page.feature-img %}class="feature-image"{% endif %}>
-    <header id="main" style="background-image: url('{{ page.feature-img | relative_url }}')">
-        <div class="title-padder">
+    <!-- Header with main title/subtitle -->
+    <header id="main" style="background-image: url('{{ page.feature-img | relative_url }}'); background-size: cover; background-position: center;">
+        <div class="title-padder" style="text-align: center; padding: 30px 0;">
             {% if page.hide_title %}
                 <div class="feature-image-padding"></div>
             {% else %}
-                <h1 id="{{ page.title | default: "" | cgi_escape }}" class="title" 
-                    style="
-                        color: #f0e6d2; 
-                        text-shadow: 2px 2px 5px #000000;
-                        background: rgba(60, 31, 26, 0.6);
-                        display: inline-block;
-                        padding: 8px 15px;
-                        border-radius: 6px;
-                    ">
+                <!-- Main Title -->
+                <h1 style="
+                    color: #f0e6d2; 
+                    text-shadow: 2px 2px 5px #000000;
+                    background: rgba(60,31,26,0.6);
+                    display: inline-block;
+                    padding: 8px 15px;
+                    border-radius: 6px;
+                    margin-bottom: 10px;
+                ">
                     {{ page.title }}
                 </h1>
                 {% if page.subtitle %}
-                    <h2 class="subtitle" 
-                        style="
-                            color: #f5e7c1; 
-                            text-shadow: 1px 1px 4px #000000;
-                            background: rgba(60, 31, 26, 0.5);
-                            display: inline-block;
-                            padding: 6px 12px;
-                            border-radius: 5px;
-                            margin-top: 8px;
-                        ">
+                    <!-- Subtitle -->
+                    <h2 style="
+                        color: #f5e7c1; 
+                        text-shadow: 1px 1px 4px #000000;
+                        background: rgba(60,31,26,0.5);
+                        display: inline-block;
+                        padding: 6px 12px;
+                        border-radius: 5px;
+                        margin-top: 8px;
+                    ">
                         {{ page.subtitle }}
                     </h2>
                 {% endif %}
@@ -36,7 +38,7 @@ layout: default
         </div>
     </header>
 
-    <!-- Post content wrapped in textured, dark parchment background -->
+    <!-- Post content with parchment background -->
     <section class="post-content">
         <div style="
             background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6a/Parchment_background.jpg');
@@ -49,6 +51,19 @@ layout: default
             box-shadow: 0 0 25px rgba(0,0,0,0.5);
             color: #f0e6d2;
         ">
+            <!-- Inline styles for all Markdown headers -->
+            <style>
+                h1, h2, h3 {
+                    background: rgba(60,31,26,0.5);
+                    color: #f5e7c1;
+                    text-shadow: 1px 1px 4px #000000;
+                    display: inline-block;
+                    padding: 4px 10px;
+                    border-radius: 6px;
+                    margin-top: 15px;
+                }
+            </style>
+
             {% if page.bootstrap %}
                 <div class="bootstrap-iso">
             {% endif %}
@@ -66,3 +81,52 @@ layout: default
     {% capture _tags %}{% include default/tags_list.liquid tags=tag_list %}{% endcapture %}
     {{ _tags | split: " " | join: " " }}
 </article>
+
+<!-- Example Portfolio Grid with scroll-style titles (inline) -->
+<div class="portfolio-grid" style="
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+">
+    {% for item in site.portfolio %}
+    <div class="portfolio-cell" style="text-align: center;">
+        <!-- Scroll-style title above image -->
+        <div style="
+            background: #f4e7c1;
+            border: 2px solid #b89a63;
+            border-radius: 10px;
+            padding: 8px 10px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: inline-block;
+            position: relative;
+        ">
+            <!-- Scroll ends -->
+            <span style="
+                position: absolute; left: -12px; top: 50%;
+                width: 8px; height: 28px; background: #b89a63;
+                border-radius: 4px;
+                transform: translateY(-50%);
+            "></span>
+            <span style="
+                position: absolute; right: -12px; top: 50%;
+                width: 8px; height: 28px; background: #b89a63;
+                border-radius: 4px;
+                transform: translateY(-50%);
+            "></span>
+
+            <a href="{{ item.url | relative_url }}" style="color: #4a2d10; text-decoration: none; font-weight: bold;"
+               onmouseover="this.style.color='#000'"
+               onmouseout="this.style.color='#4a2d10'">
+               {{ item.title }}
+            </a>
+        </div>
+
+        <a class="portfolio-link" data-keyboard="true" href="{{ item.url | relative_url }}">
+            <img alt="{{ item.title }}" src="{{ item.img | relative_url }}" style="width: 100%; border-radius: 6px;">
+        </a>
+    </div>
+    {% endfor %}
+</div>
