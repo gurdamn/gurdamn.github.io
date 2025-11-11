@@ -16,9 +16,7 @@ layout: default
             {% if page.hide_title %}
                 <div class="feature-image-padding"></div>
             {% else %}
-                <a href="{{ page.url | relative_url }}" style="
-                    text-decoration:none;
-                ">
+                <a href="{{ page.url | relative_url }}" style="text-decoration:none;">
                     <h1 id="{{ page.title | cgi_escape }}" class="title" style="
                         color: #f0e6d2;
                         text-shadow: 2px 2px 5px #000;
@@ -52,19 +50,18 @@ layout: default
       <div style="
           position: relative;
           padding: 32px;
-          color: #2a1a0e; /* Dark readable text */
-          background: #f5e6c6; /* lighter parchment base */
+          color: #2a1a0e;
+          background: #f5e6c6;
           background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6a/Parchment_background.jpg');
           background-size: cover;
-          border: 8px solid #4a190f; /* burnt brown-red border */
+          border: 8px solid #4a190f;
           border-radius: 12px;
           box-shadow:
             0 0 12px rgba(0,0,0,0.45),
             inset 0 0 35px rgba(0,0,0,0.5);
           line-height: 1.7;
       ">
-
-        <!-- Burned irregular singe effect -->
+        <!-- Burnt corner glow -->
         <div style="
             content:'';
             position:absolute;
@@ -102,16 +99,26 @@ layout: default
       </div>
     </section>
 
-    <!-- Social share -->
-    <div style="margin-top:25px; text-align:center;">
-      {% include social/share_buttons.liquid %}
+    <!-- Tags -->
+    <div style="margin-top:20px; text-align:center;">
+        {% capture tag_list %}{{ page.tags | join: "|" }}{% endcapture %}
+        {% include default/tags_list.liquid tags=tag_list %}
     </div>
 
-    <!-- Tag list -->
-    <div style="margin-top:20px;">
-      {% capture tag_list %}{{ page.tags | join: "|" }}{% endcapture %}
-      {% include default/tags_list.liquid tags=tag_list %}
-    </div>
 </article>
 
-{% include blog/post_footer.liquid color=page.color img=page.feature-img %}
+<!-- ✅ NEW Minimal Footer With Logo -->
+<footer style="
+    margin-top: 50px;
+    text-align: center;
+    padding: 25px 10px;
+    color: #ccb89a;
+    font-size: 14px;
+    opacity: 0.9;
+">
+    <div style="margin-bottom: 12px;">
+        <!-- Replace the src with your own logo -->
+        <img src="/assets/img/Gur1.png" alt="Site logo" style="height:40px;">
+    </div>
+    <div>&copy; {{ site.time | date: "%Y" }} {{ site.title }} — All rights reserved.</div>
+</footer>
