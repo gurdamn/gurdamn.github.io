@@ -2,30 +2,87 @@
 layout: default
 ---
 <article {% if page.feature-img or page.color %}class="feature-image" {% endif %}>
-    <header id="main" style="">
-        <div class="title-padder">
+    <!-- Header area -->
+    <header id="main" style="background-image: url('{{ page.feature-img | relative_url }}'); background-size: cover; background-position: center; padding: 25px 0;">
+        <div class="title-padder" style="text-align:center;">
             {% if page.hide_title %}
                 <div class="feature-image-padding"></div>
             {% else %}
-                <h1 id="{{ page.title | cgi_escape }}" class="title">{{ page.title }}</h1>
-                {% include blog/post_info.liquid author=page.author date=page.date last_modified=page.last_modified %}
+                <!-- Fantasy-styled main title -->
+                <h1 id="{{ page.title | cgi_escape }}" class="title" style="
+                    color: #f0e6d2;
+                    text-shadow: 2px 2px 5px #000;
+                    background: rgba(60,31,26,0.6);
+                    display: inline-block;
+                    padding: 10px 18px;
+                    border-radius: 6px;
+                    margin-bottom: 10px;
+                ">
+                  {{ page.title }}
+                </h1>
+
+                <!-- Author & date block -->
+                <div style="
+                    background: rgba(60,31,26,0.4);
+                    color: #e9d7b5;
+                    display: inline-block;
+                    padding: 6px 12px;
+                    border-radius: 6px;
+                    text-shadow: 1px 1px 3px #000;
+                    margin-top: 8px;
+                ">
+                    {% include blog/post_info.liquid author=page.author date=page.date last_modified=page.last_modified %}
+                </div>
             {% endif %}
         </div>
     </header>
 
+    <!-- Post content with inline parchment styling -->
     <section class="post-content">
-    {% if page.bootstrap %}<div class="bootstrap-iso">{% endif %}
+      <div style="
+          background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6a/Parchment_background.jpg');
+          background-color: #3b1f1a;
+          background-blend-mode: multiply;
+          background-repeat: repeat;
+          background-size: cover;
+          color: #f0e6d2;
+          padding: 30px;
+          border-radius: 12px;
+          box-shadow: 0 0 25px rgba(0,0,0,0.5);
+          line-height: 1.6;
+      ">
+        
+        <!-- Makes all Markdown headers look fantasy-styled -->
+        <style>
+          h1, h2, h3 {
+            background: rgba(60,31,26,0.55);
+            color: #f9e7c2;
+            text-shadow: 1px 1px 4px black;
+            padding: 4px 10px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-top: 20px;
+          }
+        </style>
+
+        {% if page.bootstrap %}<div class="bootstrap-iso">{% endif %}
             {{ content }}
-    {% if page.bootstrap %}</div>{% endif %}
+        {% if page.bootstrap %}</div>{% endif %}
+      </div>
     </section>
 
     <!-- Social media shares -->
-    {% include social/share_buttons.liquid %}
+    <div style="margin-top:20px; text-align:center;">
+      {% include social/share_buttons.liquid %}
+    </div>
 
     <!-- Tag list -->
-    {% capture tag_list %}{{ page.tags | join: "|" }}{% endcapture %}
-    {% include default/tags_list.liquid tags=tag_list %}
+    <div style="margin-top:20px;">
+      {% capture tag_list %}{{ page.tags | join: "|" }}{% endcapture %}
+      {% include default/tags_list.liquid tags=tag_list %}
+    </div>
 
 </article>
 
+<!-- Footer image section stays untouched -->
 {% include blog/post_footer.liquid color=page.color img=page.feature-img %}
