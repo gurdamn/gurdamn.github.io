@@ -1,7 +1,14 @@
 ---
-layout: default
+layout: page
 title: Aghroh Lun
+subtitle: From the Shal'tea folder
+permalink: /AghrohLun/
+gallery_path: "assets/img/pexels"
+excluded: true
+position: 3
+tags: [Page]
 ---
+
 # Aghroh Lun
 
 ## Basic Information 
