@@ -14,15 +14,32 @@ layout: default
             {% endif %}
         </div>
     </header>
+
+    <!-- ✅ Wrap post content in a fantasy background container -->
     <section class="post-content">
-    {% if page.bootstrap %}
-        <div class="bootstrap-iso">
-            {% endif %}
-            {{ content }}
+        <div style="
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6a/Parchment_background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: #3b1f1a;
+            padding: 20px;
+            border-radius: 12px;
+            color: #f0e6d2;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        ">
             {% if page.bootstrap %}
+                <div class="bootstrap-iso">
+            {% endif %}
+
+            {{ content }}
+
+            {% if page.bootstrap %}
+                </div>
+            {% endif %}
         </div>
-        {% endif %}
     </section>
+
     <!-- Tag list for portfolio -->
     {% capture tag_list %}{{ page.tags | join: "|" }}{% endcapture %}
     {% capture _tags %}{% include default/tags_list.liquid tags=tag_list %}{% endcapture %}
