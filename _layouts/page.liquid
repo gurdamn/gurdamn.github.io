@@ -7,26 +7,47 @@ layout: default
             {% if page.hide_title %}
                 <div class="feature-image-padding"></div>
             {% else %}
-                <h1 id="{{ page.title | default: "" | cgi_escape }}" class="title"> {{ page.title }}</h1>
+                <h1 id="{{ page.title | default: "" | cgi_escape }}" class="title" 
+                    style="
+                        color: #f0e6d2; 
+                        text-shadow: 2px 2px 5px #000000;
+                        background: rgba(60, 31, 26, 0.6);
+                        display: inline-block;
+                        padding: 8px 15px;
+                        border-radius: 6px;
+                    ">
+                    {{ page.title }}
+                </h1>
                 {% if page.subtitle %}
-                    <h2 class="subtitle">{{ page.subtitle }}</h2>
+                    <h2 class="subtitle" 
+                        style="
+                            color: #f5e7c1; 
+                            text-shadow: 1px 1px 4px #000000;
+                            background: rgba(60, 31, 26, 0.5);
+                            display: inline-block;
+                            padding: 6px 12px;
+                            border-radius: 5px;
+                            margin-top: 8px;
+                        ">
+                        {{ page.subtitle }}
+                    </h2>
                 {% endif %}
             {% endif %}
         </div>
     </header>
 
-    <!-- ✅ Wrap post content in a fantasy background container -->
+    <!-- Post content wrapped in textured, dark parchment background -->
     <section class="post-content">
         <div style="
             background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6a/Parchment_background.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
             background-color: #3b1f1a;
-            padding: 20px;
+            background-size: cover;
+            background-repeat: repeat;
+            background-blend-mode: multiply;
+            padding: 25px;
             border-radius: 12px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.5);
             color: #f0e6d2;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
         ">
             {% if page.bootstrap %}
                 <div class="bootstrap-iso">
