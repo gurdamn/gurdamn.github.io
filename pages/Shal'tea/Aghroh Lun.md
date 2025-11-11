@@ -4,7 +4,7 @@ title: Aghroh Lun
 subtitle: From the Shal'tea folder
 permalink: /AghrohLun/
 gallery_path: "assets/img/pexels"
-excluded: true
+excluded: false
 position: 3
 tags: [Page]
 ---
