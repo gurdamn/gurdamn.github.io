@@ -1,10 +1,10 @@
 --- 
 layout: page
-title : Portfolio 
-permalink: /portfolio/
-subtitle: "Projects I am working on" 
+title : Shal'tea 
+permalink: /Shaltea/
+subtitle: "Truth in Dragonkin" 
 feature-img: "assets/img/pexels/computer.jpeg"
-position: 4
+position: 2
 tags: [Page]
 ---
 
