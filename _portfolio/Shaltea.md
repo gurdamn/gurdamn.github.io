@@ -1,9 +1,8 @@
 ---
 layout: post
-title: Ninja
-img: "assets/img/portfolio/ninja.png"
-date: April, 08 2014
-tags: [Lorem]
+title: Shal'tea Map
+img: "assets/img/portfolio/Shal'tea.png"
+tags: [Shelter]
 ---
 
 ![image]({{ page.img | relative_url }})
