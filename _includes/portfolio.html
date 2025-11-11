@@ -2,13 +2,17 @@
 <div class="portfolio-grid">
     {% for item in site.portfolio %}
     <div class="portfolio-cell">
+
+        <!-- ✅ Title Added -->
+        <h3 class="portfolio-title">{{ item.title }}</h3>
+
         <a class="portfolio-link" data-keyboard="true" href="{{ item.url | relative_url }}">
             <div class="caption" title="{{ item.title }}">
                 <div class="caption-content">
                     <i class="fas fa-search-plus fa-3x"></i>
                 </div>
             </div>
-            <img alt="" class="" src="{{ item.img | relative_url }}">
+            <img alt="{{ item.title }}" src="{{ item.img | relative_url }}">
         </a>
     </div>
     {% endfor %}
