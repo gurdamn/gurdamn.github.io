@@ -1,94 +1,94 @@
-<!-- Portfolio Grid Section with Parchment Background & Burnt Border -->
-<div style="
-    position: relative;
-    padding: 32px;
-    color: #2a1a0e; /* Dark readable text */
-    background: #f5e6c6; /* Lighter parchment base */
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6a/Parchment_background.jpg');
-    background-size: cover;
-    border: 8px solid #4a190f; /* Burnt brown-red border */
-    border-radius: 12px;
-    box-shadow:
-      0 0 12px rgba(0,0,0,0.45),
-      inset 0 0 35px rgba(0,0,0,0.5);
-    line-height: 1.7;
-    margin-bottom: 40px;
-">
+<!-- Portfolio Grid Section -->
+<div style="margin-bottom: 40px;"> <!-- Outer wrapper, no background -->
 
-    <!-- Burnt corner glow -->
+    <!-- Inner parchment-style content box -->
     <div style="
-        content:'';
-        position:absolute;
-        inset:-6px;
-        border-radius:14px;
-        pointer-events:none;
-        background:
-          radial-gradient(circle at top left, rgba(0,0,0,0.35), transparent 60%),
-          radial-gradient(circle at top right, rgba(0,0,0,0.35), transparent 60%),
-          radial-gradient(circle at bottom left, rgba(0,0,0,0.35), transparent 60%),
-          radial-gradient(circle at bottom right, rgba(0,0,0,0.35), transparent 60%);
-        filter: blur(7px);
-        z-index:0;
-    "></div>
-
-    <!-- Portfolio Grid -->
-    <div class="portfolio-grid" style="
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 25px;
-        position: relative; /* ensures content above glow */
+        position: relative;
+        padding: 32px;
+        background: #f5e6c6; /* parchment base */
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6a/Parchment_background.jpg');
+        background-size: cover;
+        border-radius: 12px;
+        box-shadow:
+          0 0 12px rgba(0,0,0,0.45),
+          inset 0 0 35px rgba(0,0,0,0.5);
+        line-height: 1.7;
     ">
-        {% for item in site.portfolio %}
-        <div class="portfolio-cell" style="text-align: center;">
+        <!-- Portfolio Grid -->
+        <div class="portfolio-grid" style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            position: relative;
+        ">
+            {% for item in site.portfolio %}
+            <div class="portfolio-cell" style="text-align: center;">
 
-            <!-- Scroll-style title with fantasy font -->
-            <div style="
-                background: #f4e7c1;
-                border: 2px solid #b89a63;
-                border-radius: 10px;
-                padding: 8px 10px;
-                font-family: 'Cinzel', serif;
-                font-size: 1.1rem;
-                margin-bottom: 10px;
-                display: inline-block;
-                position: relative;
-                color: #4a2d10;
-            ">
-                <!-- Scroll ends -->
-                <span style="
-                    position: absolute; left: -12px; top: 50%;
-                    width: 8px; height: 28px; background: #b89a63;
-                    border-radius: 4px;
-                    transform: translateY(-50%);
-                "></span>
+                <!-- Individual parchment panel -->
+                <div style="
+                    position: relative;
+                    padding: 16px;
+                    background: #f5e6c6;
+                    background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6a/Parchment_background.jpg');
+                    background-size: cover;
+                    color: #2a1a0e;
+                    border: 4px solid #4a190f; /* burnt brown-red border */
+                    border-radius: 10px;
+                    box-shadow:
+                        0 0 8px rgba(0,0,0,0.35),
+                        inset 0 0 20px rgba(0,0,0,0.3);
+                    line-height: 1.5;
+                ">
 
-                <span style="
-                    position: absolute; right: -12px; top: 50%;
-                    width: 8px; height: 28px; background: #b89a63;
-                    border-radius: 4px;
-                    transform: translateY(-50%);
-                "></span>
+                    <!-- Scroll-style title with fantasy font -->
+                    <div style="
+                        background: #f4e7c1;
+                        border: 2px solid #b89a63;
+                        border-radius: 10px;
+                        padding: 6px 10px;
+                        font-family: 'Cinzel', serif;
+                        font-size: 1.1rem;
+                        margin-bottom: 12px;
+                        display: inline-block;
+                        position: relative;
+                        color: #4a2d10;
+                    ">
+                        <!-- Scroll ends -->
+                        <span style="
+                            position: absolute; left: -12px; top: 50%;
+                            width: 8px; height: 28px; background: #b89a63;
+                            border-radius: 4px;
+                            transform: translateY(-50%);
+                        "></span>
 
-                <a href="{{ item.url | relative_url }}"
-                   style="color: inherit; text-decoration: none; font-weight: bold;"
-                   onmouseover="this.style.color='#000'"
-                   onmouseout="this.style.color='#4a2d10'">
-                   {{ item.title }}
-                </a>
+                        <span style="
+                            position: absolute; right: -12px; top: 50%;
+                            width: 8px; height: 28px; background: #b89a63;
+                            border-radius: 4px;
+                            transform: translateY(-50%);
+                        "></span>
+
+                        <a href="{{ item.url | relative_url }}"
+                           style="color: inherit; text-decoration: none; font-weight: bold;"
+                           onmouseover="this.style.color='#000'"
+                           onmouseout="this.style.color='#4a2d10'">
+                           {{ item.title }}
+                        </a>
+                    </div>
+
+                    <!-- Portfolio Image -->
+                    <a class="portfolio-link" data-keyboard="true" href="{{ item.url | relative_url }}">
+                        <img alt="{{ item.title }}" src="{{ item.img | relative_url }}" style="width: 100%; border-radius: 6px;">
+                    </a>
+
+                </div>
             </div>
-
-            <!-- Portfolio Image -->
-            <a class="portfolio-link" data-keyboard="true" href="{{ item.url | relative_url }}">
-                <img alt="{{ item.title }}" src="{{ item.img | relative_url }}" style="width: 100%; border-radius: 6px;">
-            </a>
-
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
-
 </div>
 
-<!-- Optional minimal footer with logo -->
+<!-- Minimal Footer with Logo (separate background) -->
 <footer style="
     margin-top: 40px;
     text-align: center;
@@ -96,8 +96,9 @@
     color: #ccb89a;
     font-size: 14px;
     opacity: 0.9;
+    background: #3b1f1a; /* contrasting footer background */
 ">
-    <div style="margin-bottom: 25px;">
+    <div style="margin-bottom: 30px;">
         <img src="/assets/img/Gur1.png" alt="Site logo" style="height:40px;">
     </div>
     <div>&copy; {{ site.time | date: "%Y" }} {{ site.title }} — All rights reserved.</div>
