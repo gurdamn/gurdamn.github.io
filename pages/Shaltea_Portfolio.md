@@ -1,4 +1,5 @@
 --- 
+layout: Page
 title : Shal'tea 
 permalink: /Shaltea/
 subtitle: "Truth in Dragonkin" 
