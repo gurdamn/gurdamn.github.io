@@ -1,19 +1,42 @@
-<!-- Portfolio Grid Section -->
-<div style="margin-bottom: 40px;"> <!-- Outer wrapper, no background -->
+<!-- Portfolio Grid Section With Dark Overlay and Hover Effect -->
+<div style="
+    position: relative;
+    padding: 40px 20px;
+    background: rgba(0,0,0,0.3); /* subtle dark overlay behind parchment */
+">
 
-    <!-- Inner parchment-style content box -->
+    <!-- Inner parchment-style container with burnt border -->
     <div style="
         position: relative;
         padding: 32px;
-        background: #f5e6c6; /* parchment base */
+        background: #f5e6c6;
         background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6a/Parchment_background.jpg');
         background-size: cover;
+        border: 8px solid #4a190f; /* burnt brown-red border */
         border-radius: 12px;
         box-shadow:
           0 0 12px rgba(0,0,0,0.45),
           inset 0 0 35px rgba(0,0,0,0.5);
         line-height: 1.7;
+        z-index: 1;
     ">
+
+        <!-- Burned corners glow -->
+        <div style="
+            content:'';
+            position:absolute;
+            inset:-6px;
+            border-radius:14px;
+            pointer-events:none;
+            background:
+              radial-gradient(circle at top left, rgba(0,0,0,0.35), transparent 60%),
+              radial-gradient(circle at top right, rgba(0,0,0,0.35), transparent 60%),
+              radial-gradient(circle at bottom left, rgba(0,0,0,0.35), transparent 60%),
+              radial-gradient(circle at bottom right, rgba(0,0,0,0.35), transparent 60%);
+            filter: blur(7px);
+            z-index:0;
+        "></div>
+
         <!-- Portfolio Grid -->
         <div class="portfolio-grid" style="
             display: grid;
@@ -24,7 +47,7 @@
             {% for item in site.portfolio %}
             <div class="portfolio-cell" style="text-align: center;">
 
-                <!-- Individual parchment panel -->
+                <!-- Individual parchment panel with hover highlight -->
                 <div style="
                     position: relative;
                     padding: 16px;
@@ -32,15 +55,16 @@
                     background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6a/Parchment_background.jpg');
                     background-size: cover;
                     color: #2a1a0e;
-                    border: 4px solid #4a190f; /* burnt brown-red border */
+                    border: 4px solid #4a190f;
                     border-radius: 10px;
                     box-shadow:
                         0 0 8px rgba(0,0,0,0.35),
                         inset 0 0 20px rgba(0,0,0,0.3);
                     line-height: 1.5;
-                ">
+                    transition: box-shadow 0.3s ease, transform 0.2s ease;
+                " onmouseover="this.style.boxShadow='0 0 16px rgba(0,0,0,0.55), inset 0 0 30px rgba(0,0,0,0.45)'; this.style.transform='translateY(-4px)';" onmouseout="this.style.boxShadow='0 0 8px rgba(0,0,0,0.35), inset 0 0 20px rgba(0,0,0,0.3)'; this.style.transform='translateY(0)';">
 
-                    <!-- Scroll-style title with fantasy font -->
+                    <!-- Scroll-style title -->
                     <div style="
                         background: #f4e7c1;
                         border: 2px solid #b89a63;
@@ -88,18 +112,18 @@
     </div>
 </div>
 
-<!-- Minimal Footer with Logo (separate background) -->
+<!-- Minimal Footer With Logo -->
 <footer style="
-    margin-top: 40px;
+    margin-top: 50px;
     text-align: center;
     padding: 25px 10px;
     color: #ccb89a;
     font-size: 14px;
     opacity: 0.9;
-    background: #3b1f1a; /* contrasting footer background */
+    background: #3b1f1a; /* distinct dark footer */
 ">
-    <div style="margin-bottom: 30px;">
-        <img src="/assets/img/Gur1.png" alt="Site logo" style="height:40px;">
+    <div style="margin-bottom: 12px;">
+        <img src="/assets/img/Gur1.png" alt="Site logo" style="height:80px;">
     </div>
     <div>&copy; {{ site.time | date: "%Y" }} {{ site.title }} — All rights reserved.</div>
 </footer>
